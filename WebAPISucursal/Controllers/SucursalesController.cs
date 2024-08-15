@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +11,8 @@ namespace WebAPISucursal.Controllers
 {
     [ApiController]
     [Route("api/sucursales")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+
     public class SucursalesController : ControllerBase
     {
         private readonly TestDBContext context;
@@ -19,15 +23,23 @@ namespace WebAPISucursal.Controllers
             this.context = context;
             this.Mapper = Mapper;
         }
-
+        /// <summary>
+        /// Listado de sucursales
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
+        [AllowAnonymous]
         public async Task<ActionResult<List<SucursalConsultaDTO>>> Get()
         {
            var secursales = await context.TblSucursalAhs.ToListAsync();
 
             return Mapper.Map<List<SucursalConsultaDTO>>(secursales);
         }
-
+        /// <summary>
+        /// Buscar sucursal por id
+        /// </summary>
+        /// <param name="id">  Ingrese el id de la sucursal</param>
+        /// <returns></returns>
         [HttpGet("{id:int}")]
         public async Task<ActionResult<SucursalConsultaDTO>> Get(int id)
         {
@@ -35,6 +47,11 @@ namespace WebAPISucursal.Controllers
             return Mapper.Map<SucursalConsultaDTO>(secursales);
         }
 
+        /// <summary>
+        /// Crear sucursal
+        /// </summary>
+        /// <param name="sucursalCreacion"> Ingrese los campos solicitados </param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<ActionResult> Post([FromBody] SucursalCreacionDTO sucursalCreacion)
         {
@@ -44,7 +61,11 @@ namespace WebAPISucursal.Controllers
             await context.SaveChangesAsync();
             return Ok();
         }
-
+        /// <summary>
+        /// Actualizar sucursal
+        /// </summary>
+        /// <param name="id"> Ingrese el id de la sucursal a modificar </param>
+        /// <returns></returns>
         [HttpPut("{id:int}")]
         public async Task<ActionResult> Put([FromBody]  SucursalActualizacionDTO actualizacionDTO, int id)
         {
@@ -65,6 +86,11 @@ namespace WebAPISucursal.Controllers
             return Ok();
         }
 
+        /// <summary>
+        /// Eliminar sucursal
+        /// </summary>
+        /// <param name="id"> Ingrese el id de la sucursal a Eliminar </param>
+        /// <returns></returns>
         [HttpDelete("{id:int}")]
         public async Task<ActionResult> Delete(int id)
         {
@@ -77,7 +103,11 @@ namespace WebAPISucursal.Controllers
             await context.SaveChangesAsync();
             return Ok();
         }
-
+        /// <summary>
+        /// Actualizar sucursal
+        /// </summary>
+        /// <param name="id"> Ingrese el id de la sucursal a modificar </param>
+        /// <returns></returns>
         [HttpPatch]
         public async Task<ActionResult> Patch(int id, JsonPatchDocument<SucursalActualizacionDTO> patchDocument)
         {

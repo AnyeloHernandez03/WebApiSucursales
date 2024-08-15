@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebAPISucursal.DTOs;
@@ -8,6 +10,7 @@ namespace WebAPISucursal.Controllers
 {
     [ApiController]
     [Route("api/monedas")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class MonedasController: ControllerBase
     {
         private readonly TestDBContext context;
@@ -18,7 +21,11 @@ namespace WebAPISucursal.Controllers
             this.Mapper = Mapper;
         }
 
-
+        
+        /// <summary>
+        /// Consultar listado de monedas
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<ActionResult<List<MonedasConsultaDTO>>> Get()
         {

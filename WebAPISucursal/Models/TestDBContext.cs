@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace WebAPISucursal.Models
 {
-    public partial class TestDBContext : DbContext
+    public partial class TestDBContext : IdentityDbContext
     {
         public TestDBContext()
         {
@@ -93,7 +93,8 @@ namespace WebAPISucursal.Models
                     .HasConstraintName("FK_TBL_SUCURSAL_AH_TBL_MONEDA_AH");
             });
 
-            OnModelCreatingPartial(modelBuilder);
+            //OnModelCreatingPartial(modelBuilder);
+            base.OnModelCreating(modelBuilder);
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
