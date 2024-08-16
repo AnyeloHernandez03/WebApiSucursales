@@ -20,6 +20,13 @@ namespace WebAPISucursal
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(builder =>
+                {
+                    builder.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader();
+                });
+            });
             services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles).AddNewtonsoftJson();
             services.AddDbContext<TestDBContext>(options => 
                 options.UseSqlServer(Configuration.GetConnectionString("defaultConnection")));
@@ -100,6 +107,8 @@ namespace WebAPISucursal
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors();
 
             app.UseAuthorization();
 

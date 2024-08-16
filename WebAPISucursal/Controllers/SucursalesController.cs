@@ -11,7 +11,7 @@ namespace WebAPISucursal.Controllers
 {
     [ApiController]
     [Route("api/sucursales")]
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
 
     public class SucursalesController : ControllerBase
     {

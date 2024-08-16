@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WebAPISucursal</name>
+    </assembly>
+    <members>
+        <member name="M:WebAPISucursal.Controllers.CuentasControllers.Registrar(WebAPISucursal.DTOs.CredencialesUsuario)">
+            <summary>
+            Crear Usuario Autenticacion API
+            </summary>
+            <param name="credencialesUsuario"> Ingrese el email y la contraseña</param>
+            <returns></returns>
+        </member>
+        <member name="M:WebAPISucursal.Controllers.CuentasControllers.Login(WebAPISucursal.DTOs.CredencialesUsuario)">
+            <summary>
+            Login API y creacion de bearer token
+            </summary>
+            <param name="credencialesUsuario"> Ingrese sus credenciales</param>
+            <returns></returns>
+        </member>
+        <member name="M:WebAPISucursal.Controllers.MonedasController.Get">
+            <summary>
+            Consultar listado de monedas
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WebAPISucursal.Controllers.SucursalesController.Get">
+            <summary>
+            Listado de sucursales
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WebAPISucursal.Controllers.SucursalesController.Get(System.Int32)">
+            <summary>
+            Buscar sucursal por id
+            </summary>
+            <param name="id">  Ingrese el id de la sucursal</param>
+            <returns></returns>
+        </member>
+        <member name="M:WebAPISucursal.Controllers.SucursalesController.Post(WebAPISucursal.DTOs.SucursalCreacionDTO)">
+            <summary>
+            Crear sucursal
+            </summary>
+            <param name="sucursalCreacion"> Ingrese los campos solicitados </param>
+            <returns></returns>
+        </member>
+        <member name="M:WebAPISucursal.Controllers.SucursalesController.Put(WebAPISucursal.DTOs.SucursalActualizacionDTO,System.Int32)">
+            <summary>
+            Actualizar sucursal
+            </summary>
+            <param name="id"> Ingrese el id de la sucursal a modificar </param>
+            <returns></returns>
+        </member>
+        <member name="M:WebAPISucursal.Controllers.SucursalesController.Delete(System.Int32)">
+            <summary>
+            Eliminar sucursal
+            </summary>
+            <param name="id"> Ingrese el id de la sucursal a Eliminar </param>
+            <returns></returns>
+        </member>
+        <member name="M:WebAPISucursal.Controllers.SucursalesController.Patch(System.Int32,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{WebAPISucursal.DTOs.SucursalActualizacionDTO})">
+            <summary>
+            Actualizar sucursal
+            </summary>
+            <param name="id"> Ingrese el id de la sucursal a modificar </param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

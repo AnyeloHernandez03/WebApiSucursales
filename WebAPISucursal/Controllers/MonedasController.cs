@@ -10,7 +10,7 @@ namespace WebAPISucursal.Controllers
 {
     [ApiController]
     [Route("api/monedas")]
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class MonedasController: ControllerBase
     {
         private readonly TestDBContext context;
